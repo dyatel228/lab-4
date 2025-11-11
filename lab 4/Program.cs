@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+
 public static class Collections
 {
     private static int ReadInt(string prompt)
@@ -154,7 +155,20 @@ public static class Collections
         for (int i = 0; i < touristCount; i++)
         {
             string name = ReadNonEmptyString($"Введите имя туриста {i + 1}: ");
-            int visitedCount = ReadPositiveInt($"Сколько стран посетил {name}? ");
+
+            // Проверяем, что количество стран для туриста не превышает общее количество
+            int visitedCount;
+            while (true)
+            {
+                visitedCount = ReadPositiveInt($"Сколько стран посетил {name}? ");
+                if (visitedCount > countryCount)
+                {
+                    Console.WriteLine($"Ошибка! Стран не может быть больше {countryCount}.");
+                    continue;
+                }
+                break;
+            }
+
             HashSet<string> visited = new HashSet<string>();
             Console.WriteLine($"Введите {visitedCount} стран, которые посетил {name}:");
 
@@ -326,7 +340,7 @@ public static class Collections
         // SortedList автоматически сортирует по ключу (фамилии)
         SortedList<string, List<Student>> students = new SortedList<string, List<Student>>();
         int n = ReadPositiveInt("Введите количество абитуриентов: ");
-        Console.WriteLine("Введите данные абитуриентов (Фамилия Имя Балл 1 Балл 2):");
+        Console.WriteLine("Введите данные абитуриентов (Фамилия Имя Балл1 Балл2):");
         for (int i = 0; i < n; i++)
         {
             while (true)
@@ -383,9 +397,11 @@ public static class Collections
 
         Console.WriteLine("\nАбитуриенты, не прошедшие в первый поток (отсортировано по фамилии):");
 
-        foreach (KeyValuePair<string, List<Student>> studentGroup in students)
+        // Перебираем через ключи - фамилии
+        foreach (string lastName in students.Keys)
         {
-            foreach (Student student in studentGroup.Value)
+            List<Student> studentList = students[lastName];
+            foreach (Student student in studentList)
             {
                 if (student.Score1 < 30 || student.Score2 < 30)
                 {
