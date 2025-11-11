@@ -77,8 +77,9 @@
 Сортировка по алфавиту и вывод
 
 ### Тесты
-<img width="685" height="703" alt="image" src="https://github.com/user-attachments/assets/0fc683d0-bd64-4450-a518-eccf2782cb9f" />
-<img width="717" height="541" alt="image" src="https://github.com/user-attachments/assets/1c6a8e56-67d8-4093-b3e4-15316eda6616" />
+<img width="1221" height="316" alt="image" src="https://github.com/user-attachments/assets/52752ee0-d4fb-4e8c-9f0a-df8015cd3732" />
+<img width="1797" height="292" alt="image" src="https://github.com/user-attachments/assets/60e888d0-83dc-4d25-acee-45928c5e4065" />
+<img width="731" height="358" alt="image" src="https://github.com/user-attachments/assets/992c4ed5-89ec-41a0-99e2-22fb207175f9" />
 
 
 ## Задача 5
@@ -110,7 +111,12 @@
 Ключ: фамилия
 Значение: список студентов с этой фамилией
 Для каждого студента проверить:
-Балл1 < 30 ИЛИ Балл2 < 30 → не прошел
+Балл1 < 30 ИЛИ Балл2 < 30 - не прошел
 Вывести неудавшихся абитуриентов в алфавитном порядке
 
 ### Тесты
+<img width="830" height="278" alt="image" src="https://github.com/user-attachments/assets/3ca1861d-d497-461c-ad31-47e97017d627" />
+<img width="833" height="270" alt="image" src="https://github.com/user-attachments/assets/6eca3db4-b3be-4f65-a5a1-490818112937" />
+<img width="839" height="316" alt="image" src="https://github.com/user-attachments/assets/08b967b8-7c95-4539-a743-9bab6b81aa66" />
+
+
