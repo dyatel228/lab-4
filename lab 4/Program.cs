@@ -132,17 +132,10 @@ public static class Collections
 
         while (true)
         {
-            Console.Write($"Страна {countryIndex}: ");
-            string country = Console.ReadLine()?.Trim() ?? "";
+            string country = ReadNonEmptyString($"Страна {countryIndex}: ");
 
             if (country.ToLower() == "стоп")
                 break;
-
-            if (string.IsNullOrEmpty(country))
-            {
-                Console.WriteLine("Название страны не может быть пустым!");
-                continue;
-            }
 
             allCountries.Add(country);
             countryIndex++;
@@ -165,17 +158,10 @@ public static class Collections
 
             while (true)
             {
-                Console.Write($"Страна {visitedCountryIndex}: ");
-                string country = Console.ReadLine()?.Trim() ?? "";
+                string country = ReadNonEmptyString($"Страна {visitedCountryIndex}: ");
 
                 if (country.ToLower() == "стоп")
                     break;
-
-                if (string.IsNullOrEmpty(country))
-                {
-                    Console.WriteLine("Название страны не может быть пустым!");
-                    continue;
-                }
 
                 if (!allCountries.Contains(country))
                 {
