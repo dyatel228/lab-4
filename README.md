@@ -47,9 +47,8 @@
 посетили все n туристов, какие — некоторые из туристов, и какие — никто из туристов.
 
 ### Алгоритм решения
-Запросить страны (проверка на уникальность)
+Запросить страны
 Запросить туристов и для каждого:
-Запросить количество посещенных стран
 Запросить названия стран
 Анализ:
 Все туристы: пересечение множеств всех туристов
@@ -58,9 +57,9 @@
 Вывести три категории стран
 
 ### Тесты
-<img width="685" height="703" alt="image" src="https://github.com/user-attachments/assets/0fc683d0-bd64-4450-a518-eccf2782cb9f" />
-<img width="717" height="541" alt="image" src="https://github.com/user-attachments/assets/1c6a8e56-67d8-4093-b3e4-15316eda6616" />
-<img width="693" height="733" alt="image" src="https://github.com/user-attachments/assets/b1b10712-7908-474f-9a17-465bcd46f127" />
+<img width="911" height="698" alt="image" src="https://github.com/user-attachments/assets/7acfb05d-d776-444a-8b69-283fc019b7e2" />
+<img width="953" height="845" alt="image" src="https://github.com/user-attachments/assets/18ace2eb-cf15-4a8f-aff6-8076ca008b06" />
+<img width="893" height="913" alt="image" src="https://github.com/user-attachments/assets/04d60e9d-f344-414b-83be-f93ad0a56d42" />
 
 
 ## Задача 4
