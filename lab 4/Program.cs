@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-
 public static class Collections
 {
     private static int ReadInt(string prompt)
@@ -127,89 +126,81 @@ public static class Collections
     // Задание 3: HashSet - анализ стран по туристам
     public static void Task3()
     {
-        int countryCount = ReadPositiveInt("Введите количество стран: ");
         HashSet<string> allCountries = new HashSet<string>();
-        Console.WriteLine($"Введите {countryCount} названий стран:");
-        for (int i = 0; i < countryCount; i++)
-        {
-            while (true)
-            {
-                string country = ReadNonEmptyString($"Страна {i + 1}: ");
-                // Проверяем, что страна не повторяется
-                if (allCountries.Contains(country))
-                {
-                    Console.WriteLine("Ошибка! Такая страна уже была введена.");
-                    continue;
-                }
+        Console.WriteLine("Ввод стран (для завершения введите 'стоп'):");
+        int countryIndex = 1;
 
-                allCountries.Add(country);
+        while (true)
+        {
+            Console.Write($"Страна {countryIndex}: ");
+            string country = Console.ReadLine()?.Trim() ?? "";
+
+            if (country.ToLower() == "стоп")
                 break;
+
+            if (string.IsNullOrEmpty(country))
+            {
+                Console.WriteLine("Название страны не может быть пустым!");
+                continue;
             }
+
+            allCountries.Add(country);
+            countryIndex++;
         }
 
-        // Пользователь вводит количество туристов
-        int touristCount = ReadPositiveInt("Введите количество туристов: ");
-
-        Dictionary<string, HashSet<string>> tourists = new Dictionary<string, HashSet<string>>();
-
-        for (int i = 0; i < touristCount; i++)
+        if (allCountries.Count == 0)
         {
-            string name = ReadNonEmptyString($"Введите имя туриста {i + 1}: ");
+            Console.WriteLine("Не введено ни одной страны!");
+            return;
+        }
 
-            // Проверяем, что количество стран для туриста не превышает общее количество
-            int visitedCount;
+        int touristCount = ReadPositiveInt("\nВведите количество туристов: ");
+        List<HashSet<string>> touristsVisits = new List<HashSet<string>>();
+
+        for (int touristIndex = 1; touristIndex <= touristCount; touristIndex++)
+        {
+            HashSet<string> visited = new HashSet<string>();
+            Console.WriteLine($"Введите страны, которые посетил турист {touristIndex} (для завершения введите 'стоп'):");
+            int visitedCountryIndex = 1;
+
             while (true)
             {
-                visitedCount = ReadPositiveInt($"Сколько стран посетил {name}? ");
-                if (visitedCount > countryCount)
+                Console.Write($"Страна {visitedCountryIndex}: ");
+                string country = Console.ReadLine()?.Trim() ?? "";
+
+                if (country.ToLower() == "стоп")
+                    break;
+
+                if (string.IsNullOrEmpty(country))
                 {
-                    Console.WriteLine($"Ошибка! Стран не может быть больше {countryCount}.");
+                    Console.WriteLine("Название страны не может быть пустым!");
                     continue;
                 }
-                break;
-            }
 
-            HashSet<string> visited = new HashSet<string>();
-            Console.WriteLine($"Введите {visitedCount} стран, которые посетил {name}:");
-
-            for (int j = 0; j < visitedCount; j++)
-            {
-                while (true)
+                if (!allCountries.Contains(country))
                 {
-                    string country = ReadNonEmptyString($"Страна {j + 1}: ");
-                    // Проверяем, что страна существует в общем списке
-                    if (!allCountries.Contains(country))
-                    {
-                        Console.WriteLine($"Ошибка! Страна '{country}' не найдена в общем списке.");
-                        Console.WriteLine("Доступные страны: " + string.Join(", ", allCountries));
-                        continue;
-                    }
-
-                    // Проверяем, что страна не повторяется у этого туриста
-                    if (visited.Contains(country))
-                    {
-                        Console.WriteLine("Ошибка! Эту страну уже вводили для этого туриста.");
-                        continue;
-                    }
-
-                    visited.Add(country);
-                    break;
+                    Console.WriteLine($"Страна '{country}' не найдена в общем списке!");
+                    Console.WriteLine("Доступные страны: " + string.Join(", ", allCountries));
+                    continue;
                 }
+
+                visited.Add(country);
+                visitedCountryIndex++;
             }
 
-            tourists[name] = visited;
+            touristsVisits.Add(visited);
         }
 
         // Собираем все страны, которые посетил хотя бы один турист
         HashSet<string> allVisitedCountries = new HashSet<string>();
-        foreach (HashSet<string> touristVisits in tourists.Values)
+        foreach (HashSet<string> touristVisits in touristsVisits)
         {
             allVisitedCountries.UnionWith(touristVisits);
         }
 
         // Страны, которые посетили ВСЕ туристы
         HashSet<string> visitedByAll = new HashSet<string>(allCountries);
-        foreach (HashSet<string> touristVisits in tourists.Values)
+        foreach (HashSet<string> touristVisits in touristsVisits)
         {
             visitedByAll.IntersectWith(touristVisits);
         }
@@ -397,7 +388,7 @@ public static class Collections
 
         Console.WriteLine("\nАбитуриенты, не прошедшие в первый поток (отсортировано по фамилии):");
 
-        // Перебираем через ключи - фамилии
+        // Перебираем через ключи (фамилии)
         foreach (string lastName in students.Keys)
         {
             List<Student> studentList = students[lastName];
