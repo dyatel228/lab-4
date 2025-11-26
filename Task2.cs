@@ -5,6 +5,7 @@ public static class Task2S<T>
     public static void Task2()
     {
         int count = InputHelper.ReadPositiveInt("Введите количество элементов в связном списке: ");
+
         if (count < 2)
         {
             Console.WriteLine("Слишком мало элементов! Нужно как минимум 2 элемента.");
@@ -14,6 +15,7 @@ public static class Task2S<T>
         LinkedList<T> list = new LinkedList<T>();
 
         Console.WriteLine($"Введите {count} элементов:");
+
         for (int i = 0; i < count; i++)
         {
             T element = ReadElement($"Элемент {i + 1}: ");
@@ -69,7 +71,7 @@ public static class Task2S<T>
                 next = current.Next;
             }
 
-            if (EqualityComparer<T>.Default.Equals(current.Value, next.Value))
+            if (current.Value.Equals(next.Value))
             {
                 found = true;
                 break;
