@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-public static class Task2S
+public static class Task2S<T>
 {
     public static void Task2()
     {
@@ -11,38 +11,16 @@ public static class Task2S
             return;
         }
 
-        LinkedList<string> list = new LinkedList<string>();
+        LinkedList<T> list = new LinkedList<T>();
+
         Console.WriteLine($"Введите {count} элементов:");
         for (int i = 0; i < count; i++)
         {
-            string element = InputHelper.ReadNonEmptyString($"Элемент {i + 1}: ");
+            T element = ReadElement($"Элемент {i + 1}: ");
             list.AddLast(element);
         }
 
-        bool found = false;
-        LinkedListNode<string> current = list.First;
-
-        while (current != null)
-        {
-            LinkedListNode<string> next;
-            if (current.Next == null)
-            {
-                // Для последнего элемента следующий - первый (кольцевая проверка)
-                next = list.First;
-            }
-            else
-            {
-                next = current.Next;
-            }
-
-            if (current.Value.Equals(next.Value))
-            {
-                found = true;
-                break;
-            }
-
-            current = current.Next;
-        }
+        bool found = CheckEqualNeighborsWithLoop(list);
 
         if (found)
         {
@@ -52,5 +30,54 @@ public static class Task2S
         {
             Console.WriteLine("В списке нет равных соседних элементов");
         }
+    }
+
+    private static T ReadElement(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string input = Console.ReadLine();
+
+            try
+            {
+                T result = (T)Convert.ChangeType(input, typeof(T));
+                return result;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Ошибка! Введите элемент корректного типа ({typeof(T).Name}).");
+            }
+        }
+    }
+
+    private static bool CheckEqualNeighborsWithLoop(LinkedList<T> list)
+    {
+        bool found = false;
+        LinkedListNode<T> current = list.First;
+
+        while (current != null)
+        {
+            LinkedListNode<T> next;
+
+            if (current.Next == null)
+            {
+                next = list.First;
+            }
+            else
+            {
+                next = current.Next;
+            }
+
+            if (EqualityComparer<T>.Default.Equals(current.Value, next.Value))
+            {
+                found = true;
+                break;
+            }
+
+            current = current.Next;
+        }
+
+        return found;
     }
 }
