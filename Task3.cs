@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 public static class Task3S
 {
@@ -91,7 +91,7 @@ public static class Task3S
         HashSet<string> visitedByAll = new HashSet<string>(allCountries);
         foreach (HashSet<string> touristVisits in touristsVisits)
         {
-            visitedByAll.IntersectWith(touristVisits);
+            visitedByAll.IntersectWith(touristVisits); // Общие страны
         }
         return visitedByAll;
     }
@@ -101,7 +101,7 @@ public static class Task3S
         HashSet<string> visitedByAtLeastOne = new HashSet<string>();
         foreach (HashSet<string> touristVisits in touristsVisits)
         {
-            visitedByAtLeastOne.UnionWith(touristVisits);
+            visitedByAtLeastOne.UnionWith(touristVisits); // Все страны всех туристов
         }
         return visitedByAtLeastOne;
     }
@@ -109,14 +109,14 @@ public static class Task3S
     private static HashSet<string> CalculateCountriesVisitedBySome(HashSet<string> visitedByAll, HashSet<string> visitedByAtLeastOne)
     {
         HashSet<string> visitedBySome = new HashSet<string>(visitedByAtLeastOne);
-        visitedBySome.ExceptWith(visitedByAll);
+        visitedBySome.ExceptWith(visitedByAll); // Удаление стран всеми посещенных туристов
         return visitedBySome;
     }
 
     private static HashSet<string> CalculateCountriesVisitedByNone(HashSet<string> allCountries, HashSet<string> visitedByAtLeastOne)
     {
         HashSet<string> visitedByNone = new HashSet<string>(allCountries);
-        visitedByNone.ExceptWith(visitedByAtLeastOne);
+        visitedByNone.ExceptWith(visitedByAtLeastOne); // Удаление страны хотя бы с одним туристом
         return visitedByNone;
     }
 
@@ -134,12 +134,8 @@ public static class Task3S
         Console.WriteLine(title);
         if (countries.Count > 0)
         {
-            // Преобразуем HashSet в массив и сортируем пузырьковой сортировкой
-            string[] countriesArray = new string[countries.Count];
-            countries.CopyTo(countriesArray);
-            BubbleSort(countriesArray);
-
-            foreach (string country in countriesArray)
+            // Выводим страны в том порядке, в котором они хранятся в HashSet
+            foreach (string country in countries)
             {
                 Console.WriteLine($"- {country}");
             }
@@ -149,22 +145,5 @@ public static class Task3S
             Console.WriteLine("(нет таких стран)");
         }
     }
-
-    private static void BubbleSort(string[] array)
-    {
-        int n = array.Length;
-        for (int i = 0; i < n - 1; i++)
-        {
-            for (int j = 0; j < n - i - 1; j++)
-            {
-                // Сравниваем строки лексикографически
-                if (string.Compare(array[j], array[j + 1]) > 0)
-                {
-                    string temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-            }
-        }
-    }
 }
+
