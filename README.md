@@ -1,4 +1,4 @@
-# Блажко Иван ИТ-8 Лабораторная работа №1
+<img width="660" height="396" alt="image" src="https://github.com/user-attachments/assets/f5ca9c08-08aa-412e-80ac-aa5944696b26" /># Блажко Иван ИТ-8 Лабораторная работа №1
 ## Задача 1
 ### Текст задачи
 Составить программу, которая удаляет из списка L за каждым вхождением элемента E один
@@ -14,9 +14,11 @@
 Вывести исходный список и результат
 
 ### Тесты
-<img width="663" height="350" alt="image" src="https://github.com/user-attachments/assets/c0df3691-de11-4fed-8f30-1a1dc1274e59" />
-<img width="550" height="414" alt="image" src="https://github.com/user-attachments/assets/790436f5-0ab0-4dca-8c91-87c88c090bb2" />
-<img width="568" height="296" alt="image" src="https://github.com/user-attachments/assets/943da0f7-b9b3-4bc7-9faa-c280587ab923" />
+<img width="742" height="475" alt="image" src="https://github.com/user-attachments/assets/57c637cc-d79b-425b-9971-65109d866800" />
+<img width="734" height="503" alt="image" src="https://github.com/user-attachments/assets/07618000-802b-4742-8496-99f44c4f662f" />
+<img width="769" height="604" alt="image" src="https://github.com/user-attachments/assets/9396fde1-b9aa-4432-801a-16f657b27c03" />
+
+
 
 
 ## Задача 2
@@ -35,10 +37,10 @@
 Вывести результат проверки
 
 ### Тесты
-<img width="645" height="214" alt="image" src="https://github.com/user-attachments/assets/f8b46b76-2926-4a42-ad53-4aeb24d3662b" />
-<img width="683" height="228" alt="image" src="https://github.com/user-attachments/assets/613743d1-f205-44fd-9571-c5b82d1e1e97" />
-<img width="685" height="93" alt="image" src="https://github.com/user-attachments/assets/5a9d5bb8-33e5-45df-9d21-a015f62fda37" />
-<img width="632" height="155" alt="image" src="https://github.com/user-attachments/assets/f1ea94b5-9414-4e4f-bd8b-73b797b2a2fe" />
+<img width="719" height="396" alt="image" src="https://github.com/user-attachments/assets/833e1727-71ab-42b3-b533-1770a1e6badc" />
+<img width="660" height="396" alt="image" src="https://github.com/user-attachments/assets/42896f9e-b122-42dd-b4bb-76014badc662" />
+<img width="634" height="419" alt="image" src="https://github.com/user-attachments/assets/94488330-3fa1-4300-b6de-2b6a13b26a78" />
+<img width="734" height="400" alt="image" src="https://github.com/user-attachments/assets/7fcd8ca5-ea28-4d23-8bdc-525dad4cda67" />
 
 
 ## Задача 3
